@@ -24,9 +24,9 @@ export default function MarketPricesScreen() {
       </View>
       <ScrollView style={styles.content}>
         <View style={styles.placeholder}>
-          <Text style={styles.placeholderText}>Market Prices Screen</Text>
+          <Text style={styles.placeholderText}>{translate('marketPrices', language)}</Text>
           <Text style={styles.placeholderSubText}>
-            Market price information will be displayed here.
+            {translate('marketPricesPlaceholder', language)}
           </Text>
         </View>
       </ScrollView>
