@@ -77,7 +77,7 @@ export default function CropRecommendationScreen() {
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {!showResults ? (
           <View style={styles.formContainer}>
-            <Text style={styles.formTitle}>Tell us about your farm</Text>
+            <Text style={styles.formTitle}>{translate('tellUsAboutYourFarm', language)}</Text>
             
             <View style={styles.inputSection}>
               <Text style={styles.inputLabel}>{translate('soilType', language)}</Text>
@@ -165,10 +165,10 @@ export default function CropRecommendationScreen() {
         ) : (
           <View style={styles.resultsContainer}>
             <Text style={styles.resultsTitle}>
-              Recommended crops for your farm
+              {translate('recommendedCrops', language)}
             </Text>
             <Text style={styles.resultsSubtitle}>
-              Based on {selectedSoil} soil, {farmSize} acres, {irrigation} irrigation
+              {translate('basedOn', language, { soil: selectedSoil, size: farmSize, irrigation: irrigation })}
             </Text>
             
             {recommendations.map(renderCropCard)}
@@ -177,7 +177,7 @@ export default function CropRecommendationScreen() {
               style={styles.backButton}
               onPress={() => setShowResults(false)}
             >
-              <Text style={styles.backButtonText}>Get New Recommendations</Text>
+              <Text style={styles.backButtonText}>{translate('getNewRecommendations', language)}</Text>
             </TouchableOpacity>
           </View>
         )}
