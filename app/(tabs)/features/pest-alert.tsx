@@ -24,9 +24,9 @@ export default function PestAlertScreen() {
       </View>
       <ScrollView style={styles.content}>
         <View style={styles.placeholder}>
-          <Text style={styles.placeholderText}>Pest Alert</Text>
+          <Text style={styles.placeholderText}>{translate('pestAlert', language)}</Text>
           <Text style={styles.placeholderSubText}>
-            Information about pest alerts will be displayed here.
+            {translate('pestAlertPlaceholder', language)}
           </Text>
         </View>
       </ScrollView>
