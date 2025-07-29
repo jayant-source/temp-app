@@ -24,9 +24,9 @@ export default function SolarPlannerScreen() {
       </View>
       <ScrollView style={styles.content}>
         <View style={styles.placeholder}>
-          <Text style={styles.placeholderText}>Solar Income Planner</Text>
+          <Text style={styles.placeholderText}>{translate('solarPlanner', language)}</Text>
           <Text style={styles.placeholderSubText}>
-            The solar income planner will be available here.
+            {translate('solarPlannerPlaceholder', language)}
           </Text>
         </View>
       </ScrollView>
