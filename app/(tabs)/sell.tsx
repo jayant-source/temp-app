@@ -41,7 +41,7 @@ export default function SellScreen() {
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.formCard}>
-          <Text style={styles.formTitle}>Post Your Harvest</Text>
+          <Text style={styles.formTitle}>{translate('postYourHarvest', language)}</Text>
           
           <View style={styles.formGroup}>
             <Text style={styles.label}>{translate('cropName', language)}</Text>
@@ -49,7 +49,7 @@ export default function SellScreen() {
               style={styles.input}
               value={formData.cropName}
               onChangeText={(text) => setFormData(prev => ({ ...prev, cropName: text }))}
-              placeholder="e.g., Wheat, Rice, Sugarcane"
+              placeholder={translate('cropNamePlaceholder', language)}
             />
           </View>
 
@@ -59,7 +59,7 @@ export default function SellScreen() {
               style={styles.input}
               value={formData.quantity}
               onChangeText={(text) => setFormData(prev => ({ ...prev, quantity: text }))}
-              placeholder="Enter quantity in quintals"
+              placeholder={translate('quantityPlaceholder', language)}
               keyboardType="numeric"
             />
           </View>
@@ -70,7 +70,7 @@ export default function SellScreen() {
               style={styles.input}
               value={formData.expectedPrice}
               onChangeText={(text) => setFormData(prev => ({ ...prev, expectedPrice: text }))}
-              placeholder="Price per quintal (₹)"
+              placeholder={translate('pricePlaceholder', language)}
               keyboardType="numeric"
             />
           </View>
@@ -101,7 +101,7 @@ export default function SellScreen() {
                 <Text style={styles.perQuintal}>per quintal</Text>
               </View>
               <TouchableOpacity style={styles.acceptButton}>
-                <Text style={styles.acceptButtonText}>Accept</Text>
+                <Text style={styles.acceptButtonText}>{translate('accept', language)}</Text>
               </TouchableOpacity>
             </View>
           ))}
