@@ -1,14 +1,18 @@
 import { Link, Stack } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
+import { useLanguage } from '@/hooks/useLanguage';
+import { translate } from '@/data/translations';
 
 export default function NotFoundScreen() {
+  const { language } = useLanguage();
+
   return (
     <>
-      <Stack.Screen options={{ title: 'Oops!' }} />
+      <Stack.Screen options={{ title: translate('oops', language) }} />
       <View style={styles.container}>
-        <Text style={styles.text}>This screen doesn't exist.</Text>
+        <Text style={styles.text}>{translate('screenNotExist', language)}</Text>
         <Link href="/" style={styles.link}>
-          <Text>Go to home screen!</Text>
+          <Text>{translate('goToHome', language)}</Text>
         </Link>
       </View>
     </>
@@ -24,7 +28,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    fontWeight: 600,
+    fontWeight: '600',
   },
   link: {
     marginTop: 15,
