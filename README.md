@@ -1,4 +1,4 @@
 use this comand first: 
-rd /s /q "node_modules" 
-del package-lock.json  
-npm install    
+1: rd /s /q "node_modules" 
+2: del package-lock.json  
+3: npm install    
