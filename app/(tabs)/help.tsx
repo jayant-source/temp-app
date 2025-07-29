@@ -67,17 +67,17 @@ export default function HelpScreen() {
         </View>
 
         <View style={styles.faqSection}>
-          <Text style={styles.sectionTitle}>Frequently Asked Questions</Text>
+          <Text style={styles.sectionTitle}>{translate('faq', language)}</Text>
           
           <View style={styles.faqItem}>
             <View style={styles.faqQuestion}>
               <HelpCircle size={20} color="#22C55E" />
               <Text style={styles.faqQuestionText}>
-                How do I use the voice assistant?
+                {translate('voiceAssistantQuestion', language)}
               </Text>
             </View>
             <Text style={styles.faqAnswer}>
-              Tap the microphone icon anywhere in the app and speak your question in Hindi or English.
+              {translate('voiceAssistantAnswer', language)}
             </Text>
           </View>
 
@@ -85,11 +85,11 @@ export default function HelpScreen() {
             <View style={styles.faqQuestion}>
               <HelpCircle size={20} color="#22C55E" />
               <Text style={styles.faqQuestionText}>
-                How accurate are the crop recommendations?
+                {translate('recommendationAccuracyQuestion', language)}
               </Text>
             </View>
             <Text style={styles.faqAnswer}>
-              Our AI uses local weather data, soil conditions, and market trends to provide 85%+ accurate recommendations.
+             {translate('recommendationAccuracyAnswer', language)}
             </Text>
           </View>
 
@@ -97,11 +97,11 @@ export default function HelpScreen() {
             <View style={styles.faqQuestion}>
               <HelpCircle size={20} color="#22C55E" />
               <Text style={styles.faqQuestionText}>
-                Is the solar calculator accurate?
+                {translate('solarCalculatorAccuracyQuestion', language)}
               </Text>
             </View>
             <Text style={styles.faqAnswer}>
-              Yes, it uses satellite data and local solar irradiance to calculate potential earnings within 10% accuracy.
+              {translate('solarCalculatorAccuracyAnswer', language)}
             </Text>
           </View>
         </View>
