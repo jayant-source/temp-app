@@ -81,6 +81,9 @@ export const translations: Record<'hindi' | 'english', { [key: string]: string }
     screenNotExist: 'यह स्क्रीन मौजूद नहीं है।',
     goToHome: 'होम स्क्रीन पर जाएं!',
 
+    // Home placeholder
+    moreFeaturesComing: 'अधिक सुविधाएं जल्द ही आ रही हैं',
+
     // Placeholder
     marketPricesPlaceholder: 'बाजार मूल्य की जानकारी यहां प्रदर्शित की जाएगी।',
     pestAlertPlaceholder: 'कीट अलर्ट के बारे में जानकारी यहां प्रदर्शित की जाएगी।',
@@ -167,6 +170,9 @@ export const translations: Record<'hindi' | 'english', { [key: string]: string }
     oops: 'Oops!',
     screenNotExist: "This screen doesn't exist.",
     goToHome: 'Go to home screen!',
+
+    // Home placeholder
+    moreFeaturesComing: 'More features coming soon',
 
     // Placeholder
     marketPricesPlaceholder: 'Market price information will be displayed here.',
