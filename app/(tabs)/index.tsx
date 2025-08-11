@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, Alert } from 'react-native';
 import { Sprout, TrendingUp, Sun, Bug } from 'lucide-react-native';
+import { router } from 'expo-router';
 import { useLanguage } from '@/hooks/useLanguage';
 import { translate } from '@/data/translations';
 import { LanguageToggle } from '@/components/common/LanguageToggle';
@@ -18,7 +19,22 @@ export default function HomeScreen() {
   };
 
   const handleFeaturePress = (feature: string) => {
-    Alert.alert('Feature', `${feature} feature will be available soon!`);
+    switch (feature) {
+      case 'Crop Recommendation':
+        router.push('/features/crop-recommendation');
+        break;
+      case 'Market Prices':
+        router.push('/features/market-prices');
+        break;
+      case 'Solar Planner':
+        router.push('/features/solar-planner');
+        break;
+      case 'Pest Alert':
+        router.push('/features/pest-alert');
+        break;
+      default:
+        Alert.alert('Feature', `${feature} feature will be available soon!`);
+    }
   };
 
   return (
