@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
-import { Sprout, Sun, TrendingUp, Bug } from 'lucide-react-native';
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, Alert } from 'react-native';
+import { Sprout, TrendingUp, Sun, Bug } from 'lucide-react-native';
 import { router } from 'expo-router';
 import { useLanguage } from '@/hooks/useLanguage';
 import { translate } from '@/data/translations';
@@ -18,8 +18,23 @@ export default function HomeScreen() {
     console.log('Voice command activated');
   };
 
-  const navigateToFeature = (feature: string) => {
-    router.push(`/features/${feature}` as any);
+  const handleFeaturePress = (feature: string) => {
+    switch (feature) {
+      case 'Crop Recommendation':
+        router.push('/features/crop-recommendation');
+        break;
+      case 'Market Prices':
+        router.push('/features/market-prices');
+        break;
+      case 'Solar Planner':
+        router.push('/features/solar-planner');
+        break;
+      case 'Pest Alert':
+        router.push('/features/pest-alert');
+        break;
+      default:
+        Alert.alert('Feature', `${feature} feature will be available soon!`);
+    }
   };
 
   return (
@@ -38,35 +53,30 @@ export default function HomeScreen() {
         <WeatherCard weather={mockWeather} />
         
         <View style={styles.featuresGrid}>
-          <View style={styles.row}>
-            <FeatureButton
-              title={translate('cropRecommendation', language)}
-              icon={Sprout}
-              color="#22C55E"
-              onPress={() => navigateToFeature('crop-recommendation')}
-            />
-            <FeatureButton
-              title={translate('solarPlanner', language)}
-              icon={Sun}
-              color="#EAB308"
-              onPress={() => navigateToFeature('solar-planner')}
-            />
-          </View>
-          
-          <View style={styles.row}>
-            <FeatureButton
-              title={translate('marketPrices', language)}
-              icon={TrendingUp}
-              color="#3B82F6"
-              onPress={() => navigateToFeature('market-prices')}
-            />
-            <FeatureButton
-              title={translate('pestAlert', language)}
-              icon={Bug}
-              color="#EF4444"
-              onPress={() => navigateToFeature('pest-alert')}
-            />
-          </View>
+          <FeatureButton
+            title={translate('cropRecommendation', language)}
+            icon={Sprout}
+            onPress={() => handleFeaturePress('Crop Recommendation')}
+            color="#22C55E"
+          />
+          <FeatureButton
+            title={translate('marketPrices', language)}
+            icon={TrendingUp}
+            onPress={() => handleFeaturePress('Market Prices')}
+            color="#3B82F6"
+          />
+          <FeatureButton
+            title={translate('solarPlanner', language)}
+            icon={Sun}
+            onPress={() => handleFeaturePress('Solar Planner')}
+            color="#EAB308"
+          />
+          <FeatureButton
+            title={translate('pestAlert', language)}
+            icon={Bug}
+            onPress={() => handleFeaturePress('Pest Alert')}
+            color="#EF4444"
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -102,9 +112,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   featuresGrid: {
-    padding: 8,
-  },
-  row: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: 8,
   },
 });
