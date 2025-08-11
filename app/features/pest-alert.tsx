@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image } from 'react-native';
-import { ArrowLeft, Bug, AlertTriangle, Shield } from 'lucide-react-native';
+import { ArrowLeft, Bug, TriangleAlert as AlertTriangle, Shield } from 'lucide-react-native';
 import { router } from 'expo-router';
 import { useLanguage } from '@/hooks/useLanguage';
 import { translate } from '@/data/translations';
