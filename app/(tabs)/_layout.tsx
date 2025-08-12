@@ -49,6 +49,15 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="sell"
+        options={{
+          title: translate('sell', language),
+          tabBarIcon: ({ size, color }) => (
+            <ShoppingCart size={size} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
