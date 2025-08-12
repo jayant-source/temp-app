@@ -36,7 +36,7 @@ export default function TabLayout() {
         options={{
           title: translate('marketplace', language),
           tabBarIcon: ({ size, color }) => (
-            <ShoppingCart size={size} color={color} />
+            <Store size={size} color={color} />
           ),
         }}
       />
