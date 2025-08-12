@@ -32,15 +32,6 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="marketplace"
-        options={{
-          title: translate('marketplace', language),
-          tabBarIcon: ({ size, color }) => (
-            <ShoppingCart size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
         name="academy"
         options={{
           title: translate('academy', language),
