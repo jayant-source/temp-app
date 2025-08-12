@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Chrome as Home, ShoppingCart, DollarSign, GraduationCap, CircleHelp as HelpCircle } from 'lucide-react-native';
+import { Chrome as Home, ShoppingCart, GraduationCap, CircleHelp as HelpCircle } from 'lucide-react-native';
 import { useLanguage } from '@/hooks/useLanguage';
 import { translate } from '@/data/translations';
 
@@ -37,15 +37,6 @@ export default function TabLayout() {
           title: translate('marketplace', language),
           tabBarIcon: ({ size, color }) => (
             <ShoppingCart size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="sell"
-        options={{
-          title: translate('sell', language),
-          tabBarIcon: ({ size, color }) => (
-            <DollarSign size={size} color={color} />
           ),
         }}
       />
