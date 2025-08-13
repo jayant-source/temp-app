@@ -4,7 +4,7 @@ import { Sprout, TrendingUp, Sun, Bug } from 'lucide-react-native';
 import { router } from 'expo-router';
 import { useLanguage } from '@/hooks/useLanguage';
 import { translate } from '@/data/translations';
-import { LanguageToggle } from '@/components/common/LanguageToggle';
+import { LanguageDropdown } from '@/components/common/LanguageDropdown';
 import { VoiceButton } from '@/components/common/VoiceButton';
 import { WeatherCard } from '@/components/home/WeatherCard';
 import { FeatureButton } from '@/components/home/FeatureButton';
@@ -44,7 +44,7 @@ export default function HomeScreen() {
           {translate('welcomeUser', language, { name: userName })}
         </Text>
         <View style={styles.headerActions}>
-          <LanguageToggle />
+          <LanguageDropdown />
           <VoiceButton onPress={handleVoiceCommand} />
         </View>
       </View>

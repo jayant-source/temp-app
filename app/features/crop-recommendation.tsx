@@ -4,7 +4,7 @@ import { ArrowLeft, Sprout } from 'lucide-react-native';
 import { router } from 'expo-router';
 import { useLanguage } from '@/hooks/useLanguage';
 import { translate } from '@/data/translations';
-import { LanguageToggle } from '@/components/common/LanguageToggle';
+import { LanguageDropdown } from '@/components/common/LanguageDropdown';
 import { VoiceButton } from '@/components/common/VoiceButton';
 import { SpeakerButton } from '@/components/common/SpeakerButton';
 import { mockCrops } from '@/data/mockData';
@@ -68,7 +68,7 @@ export default function CropRecommendationScreen() {
         </TouchableOpacity>
         <Text style={styles.title}>{translate('cropRecommendation', language)}</Text>
         <View style={styles.headerActions}>
-          <LanguageToggle />
+          <LanguageDropdown />
           <VoiceButton onPress={() => console.log('Voice activated')} />
         </View>
       </View>

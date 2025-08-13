@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Ima
 import { Play, Coins, CircleCheck as CheckCircle } from 'lucide-react-native';
 import { useLanguage } from '@/hooks/useLanguage';
 import { translate } from '@/data/translations';
-import { LanguageToggle } from '@/components/common/LanguageToggle';
+import { LanguageDropdown } from '@/components/common/LanguageDropdown';
 import { VoiceButton } from '@/components/common/VoiceButton';
 import { mockVideos } from '@/data/mockData';
 import { Video } from '@/types';
@@ -63,7 +63,7 @@ export default function AcademyScreen() {
       <View style={styles.header}>
         <Text style={styles.title}>{translate('academy', language)}</Text>
         <View style={styles.headerActions}>
-          <LanguageToggle />
+          <LanguageDropdown />
           <VoiceButton onPress={() => console.log('Voice activated')} />
         </View>
       </View>

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Lin
 import { Phone, FileText, CircleHelp as HelpCircle } from 'lucide-react-native';
 import { useLanguage } from '@/hooks/useLanguage';
 import { translate } from '@/data/translations';
-import { LanguageToggle } from '@/components/common/LanguageToggle';
+import { LanguageDropdown } from '@/components/common/LanguageDropdown';
 import { VoiceButton } from '@/components/common/VoiceButton';
 import { SpeakerButton } from '@/components/common/SpeakerButton';
 import { mockSchemes } from '@/data/mockData';
@@ -47,7 +47,7 @@ export default function HelpScreen() {
       <View style={styles.header}>
         <Text style={styles.title}>{translate('help', language)}</Text>
         <View style={styles.headerActions}>
-          <LanguageToggle />
+          <LanguageDropdown />
           <VoiceButton onPress={() => console.log('Voice activated')} />
         </View>
       </View>

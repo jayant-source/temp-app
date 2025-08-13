@@ -4,7 +4,7 @@ import { ArrowLeft, TrendingUp, TrendingDown } from 'lucide-react-native';
 import { router } from 'expo-router';
 import { useLanguage } from '@/hooks/useLanguage';
 import { translate } from '@/data/translations';
-import { LanguageToggle } from '@/components/common/LanguageToggle';
+import { LanguageDropdown } from '@/components/common/LanguageDropdown';
 import { VoiceButton } from '@/components/common/VoiceButton';
 
 const mockPrices = [
@@ -26,7 +26,7 @@ export default function MarketPricesScreen() {
         </TouchableOpacity>
         <Text style={styles.title}>{translate('marketPrices', language)}</Text>
         <View style={styles.headerActions}>
-          <LanguageToggle />
+          <LanguageDropdown />
           <VoiceButton onPress={() => console.log('Voice activated')} />
         </View>
       </View>

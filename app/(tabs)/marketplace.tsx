@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Ima
 import { Users, ShoppingCart, Camera, Upload, Plus } from 'lucide-react-native';
 import { useLanguage } from '@/hooks/useLanguage';
 import { translate } from '@/data/translations';
-import { LanguageToggle } from '@/components/common/LanguageToggle';
+import { LanguageDropdown } from '@/components/common/LanguageDropdown';
 import { VoiceButton } from '@/components/common/VoiceButton';
 import { mockProducts } from '@/data/mockData';
 import { Product } from '@/types';
@@ -176,7 +176,7 @@ export default function MarketplaceScreen() {
       <View style={styles.header}>
         <Text style={styles.title}>{translate('marketplace', language)}</Text>
         <View style={styles.headerActions}>
-          <LanguageToggle />
+          <LanguageDropdown />
           <VoiceButton onPress={() => console.log('Voice activated')} />
         </View>
       </View>

@@ -4,7 +4,7 @@ import { ArrowLeft, Sun, Calculator } from 'lucide-react-native';
 import { router } from 'expo-router';
 import { useLanguage } from '@/hooks/useLanguage';
 import { translate } from '@/data/translations';
-import { LanguageToggle } from '@/components/common/LanguageToggle';
+import { LanguageDropdown } from '@/components/common/LanguageDropdown';
 import { VoiceButton } from '@/components/common/VoiceButton';
 
 export default function SolarPlannerScreen() {
@@ -51,7 +51,7 @@ export default function SolarPlannerScreen() {
         </TouchableOpacity>
         <Text style={styles.title}>{translate('solarPlanner', language)}</Text>
         <View style={styles.headerActions}>
-          <LanguageToggle />
+          <LanguageDropdown />
           <VoiceButton onPress={() => console.log('Voice activated')} />
         </View>
       </View>
