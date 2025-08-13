@@ -1,7 +1,15 @@
 import { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export type Language = 'hindi' | 'english';
+export type Language = 'hindi' | 'english' | 'bengali' | 'marathi' | 'punjabi';
+
+export const languages = [
+  { code: 'hindi', name: 'हिंदी', nativeName: 'हिंदी' },
+  { code: 'english', name: 'English', nativeName: 'English' },
+  { code: 'bengali', name: 'Bengali', nativeName: 'বাংলা' },
+  { code: 'marathi', name: 'Marathi', nativeName: 'मराठी' },
+  { code: 'punjabi', name: 'Punjabi', nativeName: 'ਪੰਜਾਬੀ' },
+] as const;
 
 export function useLanguage() {
   const [language, setLanguage] = useState<Language>('hindi');
@@ -21,8 +29,7 @@ export function useLanguage() {
     }
   };
 
-  const toggleLanguage = async () => {
-    const newLanguage = language === 'hindi' ? 'english' : 'hindi';
+  const setSelectedLanguage = async (newLanguage: Language) => {
     setLanguage(newLanguage);
     try {
       await AsyncStorage.setItem('language', newLanguage);
@@ -31,5 +38,5 @@ export function useLanguage() {
     }
   };
 
-  return { language, toggleLanguage };
+  return { language, setLanguage: setSelectedLanguage };
 }
