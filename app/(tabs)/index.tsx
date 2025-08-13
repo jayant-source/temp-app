@@ -71,12 +71,12 @@ export default function HomeScreen() {
             onPress={() => handleFeaturePress('Solar Planner')}
             color="#EAB308"
           />
-          <FeatureButton
+          {/* <FeatureButton
             title={translate('pestAlert', language)}
             icon={Bug}
             onPress={() => handleFeaturePress('Pest Alert')}
             color="#EF4444"
-          />
+          /> */}
         </View>
       </ScrollView>
     </SafeAreaView>
