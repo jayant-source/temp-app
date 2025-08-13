@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from 'expo-router';
 
 export type Language = 'hindi' | 'english' | 'bengali' | 'marathi' | 'punjabi';
 
@@ -30,9 +31,18 @@ export function useLanguage() {
   };
 
   const setSelectedLanguage = async (newLanguage: Language) => {
+    const previousLanguage = language;
     setLanguage(newLanguage);
     try {
       await AsyncStorage.setItem('language', newLanguage);
+      
+      // Reload the current route if language actually changed
+      if (previousLanguage !== newLanguage) {
+        // Small delay to ensure state is updated
+        setTimeout(() => {
+          router.replace(router.pathname || '/');
+        }, 100);
+      }
     } catch (error) {
       console.error('Error saving language:', error);
     }
