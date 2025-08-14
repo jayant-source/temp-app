@@ -20,6 +20,7 @@ export const translations: Record<'hindi' | 'english' | 'bengali' | 'marathi' | 
     // Crop Recommendation
     soilType: 'मिट्टी का प्रकार',
     farmSize: 'खेत का आकार',
+    farmSizePlaceholder: 'एकड़ में आकार दर्ज करें (जैसे 2.5)',
     irrigationSource: 'सिंचाई का स्रोत',
     getRecommendations: 'सुझाव पाएं',
     estimatedYield: 'अनुमानित उत्पादन',
@@ -111,6 +112,7 @@ export const translations: Record<'hindi' | 'english' | 'bengali' | 'marathi' | 
     // Crop Recommendation
     soilType: 'Soil Type',
     farmSize: 'Farm Size',
+    farmSizePlaceholder: 'Enter size in acres (e.g., 2.5)',
     irrigationSource: 'Irrigation Source',
     getRecommendations: 'Get Recommendations',
     estimatedYield: 'Estimated Yield',
@@ -202,6 +204,7 @@ export const translations: Record<'hindi' | 'english' | 'bengali' | 'marathi' | 
     // Crop Recommendation
     soilType: 'মাটির ধরন',
     farmSize: 'খামারের আকার',
+    farmSizePlaceholder: 'একরে আকার লিখুন (যেমন ২.৫)',
     irrigationSource: 'সেচের উৎস',
     getRecommendations: 'সুপারিশ পান',
     estimatedYield: 'আনুমানিক ফলন',
@@ -293,6 +296,7 @@ export const translations: Record<'hindi' | 'english' | 'bengali' | 'marathi' | 
     // Crop Recommendation
     soilType: 'मातीचा प्रकार',
     farmSize: 'शेताचा आकार',
+    farmSizePlaceholder: 'एकरमध्ये आकार टाका (उदा. २.५)',
     irrigationSource: 'सिंचनाचा स्रोत',
     getRecommendations: 'शिफारसी मिळवा',
     estimatedYield: 'अंदाजित उत्पादन',
@@ -384,6 +388,7 @@ export const translations: Record<'hindi' | 'english' | 'bengali' | 'marathi' | 
     // Crop Recommendation
     soilType: 'ਮਿੱਟੀ ਦੀ ਕਿਸਮ',
     farmSize: 'ਖੇਤ ਦਾ ਆਕਾਰ',
+    farmSizePlaceholder: 'ਏਕੜ ਵਿੱਚ ਆਕਾਰ ਦਰਜ ਕਰੋ (ਜਿਵੇਂ ੨.੫)',
     irrigationSource: 'ਸਿੰਚਾਈ ਦਾ ਸਰੋਤ',
     getRecommendations: 'ਸਿਫਾਰਸ਼ਾਂ ਪ੍ਰਾਪਤ ਕਰੋ',
     estimatedYield: 'ਅਨੁਮਾਨਿਤ ਪੈਦਾਵਾਰ',

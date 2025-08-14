@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image, TextInput } from 'react-native';
 import { ArrowLeft, Sprout } from 'lucide-react-native';
 import { router } from 'expo-router';
 import { useLanguage } from '@/hooks/useLanguage';
@@ -11,20 +11,27 @@ import { mockCrops } from '@/data/mockData';
 import { Crop } from '@/types';
 
 const soilTypes = ['Clay', 'Sandy', 'Loamy', 'Black'];
-const farmSizes = ['1-2', '3-5', '6-10', '10+'];
 const irrigationSources = ['Rain-fed', 'Tube well', 'Canal', 'Drip'];
 
 export default function CropRecommendationScreen() {
   const { language } = useLanguage();
   const [selectedSoil, setSelectedSoil] = useState('');
-  const [selectedSize, setSelectedSize] = useState('');
-  const [selectedIrrigation, setSelectedIrrigation] = useState('');
+  const [farmSize, setFarmSize] = useState('');
+  const [selectedIrrigation, setSelectedIrrigation] = useState<string[]>([]);
   const [showRecommendations, setShowRecommendations] = useState(false);
 
   const handleGetRecommendations = () => {
-    if (selectedSoil && selectedSize && selectedIrrigation) {
+    if (selectedSoil && farmSize && selectedIrrigation.length > 0) {
       setShowRecommendations(true);
     }
+  };
+
+  const toggleIrrigation = (irrigation: string) => {
+    setSelectedIrrigation(prev => 
+      prev.includes(irrigation)
+        ? prev.filter(item => item !== irrigation)
+        : [...prev, irrigation]
+    );
   };
 
   const renderCrop = (crop: Crop) => (
@@ -106,42 +113,30 @@ export default function CropRecommendationScreen() {
 
             <View style={styles.formGroup}>
               <Text style={styles.label}>{translate('farmSize', language)} (acres)</Text>
-              <View style={styles.optionsGrid}>
-                {farmSizes.map((size) => (
-                  <TouchableOpacity
-                    key={size}
-                    style={[
-                      styles.optionButton,
-                      selectedSize === size && styles.selectedOption
-                    ]}
-                    onPress={() => setSelectedSize(size)}
-                  >
-                    <Text style={[
-                      styles.optionText,
-                      selectedSize === size && styles.selectedOptionText
-                    ]}>
-                      {size}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
+              <TextInput
+                style={styles.input}
+                value={farmSize}
+                onChangeText={setFarmSize}
+                placeholder={translate('farmSizePlaceholder', language)}
+                keyboardType="decimal-pad"
+              />
             </View>
 
             <View style={styles.formGroup}>
-              <Text style={styles.label}>{translate('irrigationSource', language)}</Text>
+              <Text style={styles.label}>{translate('irrigationSource', language)} (Multiple selection allowed)</Text>
               <View style={styles.optionsGrid}>
                 {irrigationSources.map((irrigation) => (
                   <TouchableOpacity
                     key={irrigation}
                     style={[
                       styles.optionButton,
-                      selectedIrrigation === irrigation && styles.selectedOption
+                      selectedIrrigation.includes(irrigation) && styles.selectedOption
                     ]}
-                    onPress={() => setSelectedIrrigation(irrigation)}
+                    onPress={() => toggleIrrigation(irrigation)}
                   >
                     <Text style={[
                       styles.optionText,
-                      selectedIrrigation === irrigation && styles.selectedOptionText
+                      selectedIrrigation.includes(irrigation) && styles.selectedOptionText
                     ]}>
                       {irrigation}
                     </Text>
@@ -153,10 +148,10 @@ export default function CropRecommendationScreen() {
             <TouchableOpacity
               style={[
                 styles.recommendButton,
-                (!selectedSoil || !selectedSize || !selectedIrrigation) && styles.disabledButton
+                (!selectedSoil || !farmSize || selectedIrrigation.length === 0) && styles.disabledButton
               ]}
               onPress={handleGetRecommendations}
-              disabled={!selectedSoil || !selectedSize || !selectedIrrigation}
+              disabled={!selectedSoil || !farmSize || selectedIrrigation.length === 0}
             >
               <Text style={styles.recommendButtonText}>
                 {translate('getRecommendations', language)}
@@ -171,8 +166,8 @@ export default function CropRecommendationScreen() {
             <Text style={styles.recommendationsSubtitle}>
               {translate('basedOn', language, {
                 soil: selectedSoil,
-                size: selectedSize,
-                irrigation: selectedIrrigation
+                size: farmSize,
+                irrigation: selectedIrrigation.join(', ')
               })}
             </Text>
             
@@ -180,7 +175,12 @@ export default function CropRecommendationScreen() {
             
             <TouchableOpacity
               style={styles.newRecommendationButton}
-              onPress={() => setShowRecommendations(false)}
+              onPress={() => {
+                setShowRecommendations(false);
+                setSelectedSoil('');
+                setFarmSize('');
+                setSelectedIrrigation([]);
+              }}
             >
               <Text style={styles.newRecommendationButtonText}>
                 {translate('getNewRecommendations', language)}
@@ -280,6 +280,15 @@ const styles = StyleSheet.create({
   },
   selectedOptionText: {
     color: 'white',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#D1D5DB',
+    borderRadius: 8,
+    padding: 12,
+    fontSize: 16,
+    backgroundColor: '#F9FAFB',
+    color: '#1F2937',
   },
   recommendButton: {
     backgroundColor: '#22C55E',
