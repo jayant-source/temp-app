@@ -12,16 +12,21 @@ import { Crop } from '@/types';
 
 const soilTypes = ['Clay', 'Sandy', 'Loamy', 'Black'];
 const irrigationSources = ['Rain-fed', 'Tube well', 'Canal', 'Drip'];
+const fertilizerTypes = ['None', 'Chemical', 'Organic'];
 
 export default function CropRecommendationScreen() {
   const { language } = useLanguage();
   const [selectedSoil, setSelectedSoil] = useState('');
   const [farmSize, setFarmSize] = useState('');
   const [selectedIrrigation, setSelectedIrrigation] = useState<string[]>([]);
+  const [selectedFertilizer, setSelectedFertilizer] = useState('');
+  const [nitrogen, setNitrogen] = useState('');
+  const [phosphorus, setPhosphorus] = useState('');
+  const [potassium, setPotassium] = useState('');
   const [showRecommendations, setShowRecommendations] = useState(false);
 
   const handleGetRecommendations = () => {
-    if (selectedSoil && farmSize && selectedIrrigation.length > 0) {
+    if (selectedSoil && farmSize && selectedIrrigation.length > 0 && selectedFertilizer && nitrogen && phosphorus && potassium) {
       setShowRecommendations(true);
     }
   };
@@ -145,13 +150,75 @@ export default function CropRecommendationScreen() {
               </View>
             </View>
 
+            <View style={styles.formGroup}>
+              <Text style={styles.label}>{translate('fertilizerType', language)}</Text>
+              <View style={styles.optionsGrid}>
+                {fertilizerTypes.map((fertilizer) => (
+                  <TouchableOpacity
+                    key={fertilizer}
+                    style={[
+                      styles.optionButton,
+                      selectedFertilizer === fertilizer && styles.selectedOption
+                    ]}
+                    onPress={() => setSelectedFertilizer(fertilizer)}
+                  >
+                    <Text style={[
+                      styles.optionText,
+                      selectedFertilizer === fertilizer && styles.selectedOptionText
+                    ]}>
+                      {translate(fertilizer.toLowerCase(), language)}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            </View>
+
+            <View style={styles.formGroup}>
+              <Text style={styles.label}>{translate('soilNutrients', language)}</Text>
+              
+              <View style={styles.nutrientRow}>
+                <View style={styles.nutrientField}>
+                  <Text style={styles.nutrientLabel}>{translate('nitrogen', language)} (N)</Text>
+                  <TextInput
+                    style={styles.nutrientInput}
+                    value={nitrogen}
+                    onChangeText={setNitrogen}
+                    placeholder="0.0"
+                    keyboardType="decimal-pad"
+                  />
+                </View>
+                
+                <View style={styles.nutrientField}>
+                  <Text style={styles.nutrientLabel}>{translate('phosphorus', language)} (P)</Text>
+                  <TextInput
+                    style={styles.nutrientInput}
+                    value={phosphorus}
+                    onChangeText={setPhosphorus}
+                    placeholder="0.0"
+                    keyboardType="decimal-pad"
+                  />
+                </View>
+                
+                <View style={styles.nutrientField}>
+                  <Text style={styles.nutrientLabel}>{translate('potassium', language)} (K)</Text>
+                  <TextInput
+                    style={styles.nutrientInput}
+                    value={potassium}
+                    onChangeText={setPotassium}
+                    placeholder="0.0"
+                    keyboardType="decimal-pad"
+                  />
+                </View>
+              </View>
+            </View>
+
             <TouchableOpacity
               style={[
                 styles.recommendButton,
-                (!selectedSoil || !farmSize || selectedIrrigation.length === 0) && styles.disabledButton
+                (!selectedSoil || !farmSize || selectedIrrigation.length === 0 || !selectedFertilizer || !nitrogen || !phosphorus || !potassium) && styles.disabledButton
               ]}
               onPress={handleGetRecommendations}
-              disabled={!selectedSoil || !farmSize || selectedIrrigation.length === 0}
+              disabled={!selectedSoil || !farmSize || selectedIrrigation.length === 0 || !selectedFertilizer || !nitrogen || !phosphorus || !potassium}
             >
               <Text style={styles.recommendButtonText}>
                 {translate('getRecommendations', language)}
@@ -167,7 +234,9 @@ export default function CropRecommendationScreen() {
               {translate('basedOn', language, {
                 soil: selectedSoil,
                 size: farmSize,
-                irrigation: selectedIrrigation.join(', ')
+                irrigation: selectedIrrigation.join(', '),
+                fertilizer: selectedFertilizer,
+                nutrients: `N:${nitrogen}, P:${phosphorus}, K:${potassium}`
               })}
             </Text>
             
@@ -180,6 +249,10 @@ export default function CropRecommendationScreen() {
                 setSelectedSoil('');
                 setFarmSize('');
                 setSelectedIrrigation([]);
+                setSelectedFertilizer('');
+                setNitrogen('');
+                setPhosphorus('');
+                setPotassium('');
               }}
             >
               <Text style={styles.newRecommendationButtonText}>
@@ -388,5 +461,30 @@ const styles = StyleSheet.create({
     color: '#22C55E',
     fontSize: 16,
     fontWeight: '600',
+  },
+  nutrientRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  nutrientField: {
+    flex: 1,
+  },
+  nutrientLabel: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#6B7280',
+    marginBottom: 6,
+    textAlign: 'center',
+  },
+  nutrientInput: {
+    borderWidth: 1,
+    borderColor: '#D1D5DB',
+    borderRadius: 8,
+    padding: 10,
+    fontSize: 14,
+    backgroundColor: '#F9FAFB',
+    color: '#1F2937',
+    textAlign: 'center',
   },
 });

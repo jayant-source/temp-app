@@ -31,6 +31,16 @@ export const translations: Record<'hindi' | 'english' | 'bengali' | 'marathi' | 
     basedOn: '{{soil}} मिट्टी, {{size}} एकड़, {{irrigation}} सिंचाई के आधार पर',
     getNewRecommendations: 'नई सिफारिशें प्राप्त करें',
 
+    // Fertilizer and Nutrients
+    fertilizerType: 'उर्वरक प्रकार',
+    none: 'कोई नहीं',
+    chemical: 'रासायनिक',
+    organic: 'जैविक',
+    soilNutrients: 'मिट्टी के पोषक तत्व (mg/kg)',
+    nitrogen: 'नाइट्रोजन',
+    phosphorus: 'फास्फोरस',
+    potassium: 'पोटेशियम',
+
     // Marketplace
     seeds: 'बीज',
     fertilizers: 'उर्वरक',
@@ -123,6 +133,16 @@ export const translations: Record<'hindi' | 'english' | 'bengali' | 'marathi' | 
     basedOn: 'Based on {{soil}} soil, {{size}} acres, {{irrigation}} irrigation',
     getNewRecommendations: 'Get New Recommendations',
     
+    // Fertilizer and Nutrients
+    fertilizerType: 'Fertilizer Type',
+    none: 'None',
+    chemical: 'Chemical',
+    organic: 'Organic',
+    soilNutrients: 'Soil Nutrients (mg/kg)',
+    nitrogen: 'Nitrogen',
+    phosphorus: 'Phosphorus',
+    potassium: 'Potassium',
+
     // Marketplace
     seeds: 'Seeds',
     fertilizers: 'Fertilizers',
@@ -214,6 +234,16 @@ export const translations: Record<'hindi' | 'english' | 'bengali' | 'marathi' | 
     recommendedCrops: 'আপনার খামারের জন্য প্রস্তাবিত ফসল',
     basedOn: '{{soil}} মাটি, {{size}} একর, {{irrigation}} সেচের উপর ভিত্তি করে',
     getNewRecommendations: 'নতুন সুপারিশ পান',
+
+    // Fertilizer and Nutrients
+    fertilizerType: 'সারের ধরন',
+    none: 'কোনটি নয়',
+    chemical: 'রাসায়নিক',
+    organic: 'জৈব',
+    soilNutrients: 'মাটির পুষ্টি উপাদান (mg/kg)',
+    nitrogen: 'নাইট্রোজেন',
+    phosphorus: 'ফসফরাস',
+    potassium: 'পটাসিয়াম',
 
     // Marketplace
     seeds: 'বীজ',
@@ -307,6 +337,16 @@ export const translations: Record<'hindi' | 'english' | 'bengali' | 'marathi' | 
     basedOn: '{{soil}} माती, {{size}} एकर, {{irrigation}} सिंचनावर आधारित',
     getNewRecommendations: 'नवीन शिफारसी मिळवा',
 
+    // Fertilizer and Nutrients
+    fertilizerType: 'खताचा प्रकार',
+    none: 'काहीही नाही',
+    chemical: 'रासायनिक',
+    organic: 'सेंद्रिय',
+    soilNutrients: 'मातीतील पोषक द्रव्ये (mg/kg)',
+    nitrogen: 'नायट्रोजन',
+    phosphorus: 'फॉस्फरस',
+    potassium: 'पोटॅशियम',
+
     // Marketplace
     seeds: 'बियाणे',
     fertilizers: 'खत',
@@ -398,6 +438,16 @@ export const translations: Record<'hindi' | 'english' | 'bengali' | 'marathi' | 
     recommendedCrops: 'ਤੁਹਾਡੇ ਖੇਤ ਲਈ ਸਿਫਾਰਸ਼ ਕੀਤੀਆਂ ਫਸਲਾਂ',
     basedOn: '{{soil}} ਮਿੱਟੀ, {{size}} ਏਕੜ, {{irrigation}} ਸਿੰਚਾਈ ਦੇ ਆਧਾਰ ਤੇ',
     getNewRecommendations: 'ਨਵੀਆਂ ਸਿਫਾਰਸ਼ਾਂ ਪ੍ਰਾਪਤ ਕਰੋ',
+
+    // Fertilizer and Nutrients
+    fertilizerType: 'ਖਾਦ ਦੀ ਕਿਸਮ',
+    none: 'ਕੋਈ ਨਹੀਂ',
+    chemical: 'ਰਸਾਇਣਕ',
+    organic: 'ਜੈਵਿਕ',
+    soilNutrients: 'ਮਿੱਟੀ ਦੇ ਪੋਸ਼ਕ ਤੱਤ (mg/kg)',
+    nitrogen: 'ਨਾਈਟ੍ਰੋਜਨ',
+    phosphorus: 'ਫਾਸਫੋਰਸ',
+    potassium: 'ਪੋਟਾਸ਼ੀਅਮ',
 
     // Marketplace
     seeds: 'ਬੀਜ',
