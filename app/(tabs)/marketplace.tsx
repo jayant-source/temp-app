@@ -15,6 +15,11 @@ export default function MarketplaceScreen() {
   const [activeTab, setActiveTab] = useState<'buy' | 'sell'>('buy');
   const [selectedCategory, setSelectedCategory] = useState<typeof categories[number]>('seeds');
   const [cart, setCart] = useState<string[]>([]);
+  const [activeBids, setActiveBids] = useState([
+    { id: '1', buyer: 'राम व्यापारी', price: 2100, quantity: 50, crop: 'Wheat' },
+    { id: '2', buyer: 'श्याम कंपनी', price: 2050, quantity: 100, crop: 'Rice' },
+    { id: '3', buyer: 'गीता एक्सपोर्ट', price: 2150, quantity: 25, crop: 'Cotton' },
+  ]);
   
   // Sell form state
   const [formData, setFormData] = useState({
@@ -34,15 +39,20 @@ export default function MarketplaceScreen() {
       Alert.alert('Error', 'Please fill all fields');
       return;
     }
-    Alert.alert('Success', 'Your listing has been posted!');
+    
+    // Add the new listing to active bids
+    const newBid = {
+      id: Date.now().toString(),
+      buyer: 'Your Listing',
+      price: parseInt(formData.expectedPrice),
+      quantity: parseInt(formData.quantity),
+      crop: formData.cropName,
+    };
+    
+    setActiveBids(prev => [newBid, ...prev]);
+    Alert.alert('Success', 'Your listing has been posted and is now visible in active bids!');
     setFormData({ cropName: '', quantity: '', expectedPrice: '' });
   };
-
-  const mockBids = [
-    { id: '1', buyer: 'राम व्यापारी', price: 2100, quantity: 50 },
-    { id: '2', buyer: 'श्याम कंपनी', price: 2050, quantity: 100 },
-    { id: '3', buyer: 'गीता एक्सपोर्ट', price: 2150, quantity: 25 },
-  ];
 
   const renderProduct = (product: Product) => (
     <View key={product.id} style={styles.productCard}>
@@ -150,12 +160,12 @@ export default function MarketplaceScreen() {
 
       <View style={styles.bidsCard}>
         <Text style={styles.bidsTitle}>{translate('activeBids', language)}</Text>
-        {mockBids.map((bid) => (
+        {activeBids.map((bid) => (
           <View key={bid.id} style={styles.bidItem}>
             <View style={styles.bidInfo}>
               <Text style={styles.buyerName}>{bid.buyer}</Text>
               <Text style={styles.bidDetails}>
-                Quantity: {bid.quantity} quintals
+                {bid.crop} - Quantity: {bid.quantity} quintals
               </Text>
             </View>
             <View style={styles.bidPrice}>
@@ -163,7 +173,9 @@ export default function MarketplaceScreen() {
               <Text style={styles.perQuintal}>per quintal</Text>
             </View>
             <TouchableOpacity style={styles.acceptButton}>
-              <Text style={styles.acceptButtonText}>{translate('accept', language)}</Text>
+              <Text style={styles.acceptButtonText}>
+                {bid.buyer === 'Your Listing' ? 'Edit' : translate('accept', language)}
+              </Text>
             </TouchableOpacity>
           </View>
         ))}
